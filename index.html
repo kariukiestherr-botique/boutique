@@ -49,7 +49,210 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header><!-- Top Announcement Bar -->
+<div class="announcement-bar">
+    <div class="container">
+        <div class="announcement-content">
+            <span class="announcement-text">
+                🚀 FREE SHIPPING ON ORDERS OVER KSH 2,000 • 🇰🇪 NATIONWIDE DELIVERY
+            </span>
+            <div class="announcement-actions">
+                <a href="#contact" class="announcement-link">Contact Support</a>
+                <span class="announcement-divider">|</span>
+                <a href="#tracking" class="announcement-link">Track Order</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Header -->
+<header class="header professional-header">
+    <div class="container">
+        <div class="nav-wrapper">
+            <!-- Left: Logo & Main Navigation -->
+            <div class="nav-left">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <div class="logo-symbol">E</div>
+                        <div class="logo-dumbbell"></div>
+                    </div>
+                    <span class="logo-text">ELSSY<span>BOUTIQUE</span></span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-nav">
+                    <div class="nav-item">
+                        <a href="#home" class="nav-link">HOME</a>
+                    </div>
+                    <div class="nav-item has-megamenu">
+                        <a href="#shop" class="nav-link">SHOP <i class="fas fa-chevron-down"></i></a>
+                        <div class="megamenu">
+                            <div class="megamenu-content">
+                                <div class="megamenu-column">
+                                    <h4>MEN'S COLLECTION</h4>
+                                    <ul>
+                                        <li><a href="#men-tops">Workout Tops</a></li>
+                                        <li><a href="#men-bottoms">Training Bottoms</a></li>
+                                        <li><a href="#men-shorts">Gym Shorts</a></li>
+                                        <li><a href="#men-accessories">Accessories</a></li>
+                                    </ul>
+                                </div>
+                                <div class="megamenu-column">
+                                    <h4>WOMEN'S COLLECTION</h4>
+                                    <ul>
+                                        <li><a href="#women-tops">Sports Tops</a></li>
+                                        <li><a href="#women-leggings">Leggings</a></li>
+                                        <li><a href="#women-sports-bras">Sports Bras</a></li>
+                                        <li><a href="#women-accessories">Accessories</a></li>
+                                    </ul>
+                                </div>
+                                <div class="megamenu-column">
+                                    <h4>FEATURED</h4>
+                                    <ul>
+                                        <li><a href="#new-arrivals">New Arrivals</a></li>
+                                        <li><a href="#best-sellers">Best Sellers</a></li>
+                                        <li><a href="#sale">Sale Items</a></li>
+                                        <li><a href="#collections">Collections</a></li>
+                                    </ul>
+                                </div>
+                                <div class="megamenu-featured">
+                                    <div class="featured-product">
+                                        <div class="featured-image"></div>
+                                        <div class="featured-info">
+                                            <h5>NEW: Performance Pro</h5>
+                                            <p>Advanced workout gear</p>
+                                            <a href="#featured" class="btn-featured">Shop Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#collections" class="nav-link">COLLECTIONS</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#deals" class="nav-link sale-link">DEALS <span class="sale-badge">HOT</span></a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Center: Search Bar -->
+            <div class="nav-center">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search products, brands, categories...">
+                        <button class="search-clear">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="search-results">
+                        <!-- Search results will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Action Icons -->
+            <div class="nav-right">
+                <!-- Theme Toggle -->
+                <button class="nav-icon theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <!-- User Account -->
+                <div class="nav-icon user-account">
+                    <button class="account-btn">
+                        <i class="far fa-user"></i>
+                    </button>
+                    <div class="account-dropdown">
+                        <div class="dropdown-header">
+                            <h4>Your Account</h4>
+                        </div>
+                        <div class="dropdown-content">
+                            <a href="auth.html" class="dropdown-item">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Sign In
+                            </a>
+                            <a href="auth.html" class="dropdown-item">
+                                <i class="fas fa-user-plus"></i>
+                                Create Account
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#orders" class="dropdown-item">
+                                <i class="fas fa-shopping-bag"></i>
+                                Your Orders
+                            </a>
+                            <a href="#wishlist" class="dropdown-item">
+                                <i class="far fa-heart"></i>
+                                Wishlist
+                            </a>
+                            <a href="#settings" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                Account Settings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wishlist -->
+                <button class="nav-icon wishlist-btn" title="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span class="icon-badge wishlist-count">0</span>
+                </button>
+
+                <!-- Shopping Cart -->
+                <div class="nav-icon cart-container">
+                    <button class="cart-btn" onclick="toggleCart()" title="Shopping Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="icon-badge cart-count">0</span>
+                    </button>
+                    <div class="cart-preview">
+                        <div class="preview-header">
+                            <h4>Your Cart</h4>
+                            <span class="preview-count">0 items</span>
+                        </div>
+                        <div class="preview-items">
+                            <!-- Cart items will appear here -->
+                        </div>
+                        <div class="preview-footer">
+                            <div class="preview-total">
+                                <span>Subtotal:</span>
+                                <span class="preview-amount">KSH 0</span>
+                            </div>
+                            <button class="btn-preview-checkout" onclick="toggleCart()">View Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+<div class="mobile-menu">
+    <div class="mobile-menu-header">
+        <div class="logo">
+            <div class="logo-icon">EB</div>
+            <span class="logo-text">ELSSY<span>BOUTIQUE</span></span>
+        </div>
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="mobile-menu-content">
+        <!-- Mobile menu content will be populated by JavaScript -->
+    </div>
+</div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
