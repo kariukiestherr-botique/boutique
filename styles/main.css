@@ -1,424 +1,699 @@
-// ===== ADVANCED ANIMATION SYSTEM =====
+/* ===== ADVANCED ANIMATIONS SYSTEM ===== */
 
-class AnimationManager {
-    constructor() {
-        this.observers = [];
-        this.scrollEffects = new Map();
-        this.init();
-    }
+/* Loading Screen Animations */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
 
-    init() {
-        this.setupLoadingAnimation();
-        this.setupScrollAnimations();
-        this.setupIntersectionObserver();
-        this.setupParallax();
-        this.setupCountUpAnimations();
-    }
+.loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
 
-    // Loading Screen Management
-    setupLoadingAnimation() {
-        const loadingScreen = document.getElementById('loadingScreen');
-        const progressFill = document.querySelector('.progress-fill');
-        
-        if (!loadingScreen) return;
+.loading-content {
+    text-align: center;
+    color: white;
+}
 
-        // Simulate loading progress
-        let progress = 0;
-        const loadingInterval = setInterval(() => {
-            progress += Math.random() * 15;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(loadingInterval);
-                
-                // Complete loading
-                setTimeout(() => {
-                    loadingScreen.classList.add('fade-out');
-                    setTimeout(() => {
-                        loadingScreen.remove();
-                        this.triggerEvent('loadingComplete');
-                    }, 500);
-                }, 500);
-            }
-            
-            if (progressFill) {
-                progressFill.style.transform = `scaleX(${progress / 100})`;
-            }
-        }, 200);
-    }
+.logo-loader {
+    margin-bottom: 2rem;
+}
 
-    // Scroll-based Animations
-    setupScrollAnimations() {
-        let ticking = false;
-        
-        const updateScrollAnimations = () => {
-            const scrollY = window.pageYOffset;
-            const windowHeight = window.innerHeight;
-            
-            // Update parallax elements
-            this.updateParallax(scrollY);
-            
-            // Update progress indicators
-            this.updateScrollProgress(scrollY);
-            
-            ticking = false;
-        };
-        
-        const requestTick = () => {
-            if (!ticking) {
-                requestAnimationFrame(updateScrollAnimations);
-                ticking = true;
-            }
-        };
-        
-        window.addEventListener('scroll', requestTick, { passive: true });
-    }
+.logo-loader .logo-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    margin: 0 auto;
+}
 
-    // Intersection Observer for fade-in animations
-    setupIntersectionObserver() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    this.animateStaggerChildren(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+.pulse {
+    animation: pulse 2s infinite;
+}
 
-        // Observe elements with data-animate attribute
-        document.querySelectorAll('[data-animate]').forEach(el => {
-            observer.observe(el);
-        });
-    }
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
 
-    // Stagger animation for child elements
-    animateStaggerChildren(parent) {
-        const children = parent.querySelectorAll('.stagger-children > *');
-        children.forEach((child, index) => {
-            child.style.animationDelay = `${index * 0.1}s`;
-        });
-    }
+.loading-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, #e53935 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-    // Parallax Effect System
-    setupParallax() {
-        this.parallaxElements = document.querySelectorAll('.parallax-layer');
-    }
+.loading-progress {
+    width: 200px;
+    margin: 2rem auto 0;
+}
 
-    updateParallax(scrollY) {
-        this.parallaxElements.forEach(layer => {
-            const depth = layer.getAttribute('data-depth') || 0.5;
-            const movement = -(scrollY * depth);
-            layer.style.transform = `translateY(${movement}px)`;
-        });
-    }
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
 
-    // Count Up Animations for Statistics
-    setupCountUpAnimations() {
-        const stats = document.querySelectorAll('.stat');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animateCountUp(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e53935 0%, #ff6b6b 100%);
+    border-radius: 2px;
+    animation: loadingProgress 2s ease-in-out;
+    transform-origin: left;
+}
 
-        stats.forEach(stat => observer.observe(stat));
-    }
+@keyframes loadingProgress {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
 
-    animateCountUp(statElement) {
-        const numberElement = statElement.querySelector('.stat-number');
-        const target = parseInt(statElement.getAttribute('data-count') || numberElement.textContent);
-        const duration = 2000; // 2 seconds
-        const steps = 60;
-        const step = target / steps;
-        let current = 0;
+/* Typing Animation */
+.typing-animation {
+    overflow: hidden;
+    border-right: 2px solid #e53935;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
 
-        const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            numberElement.textContent = Math.floor(current);
-        }, duration / steps);
-    }
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
 
-    // Progress Bar Animations
-    updateScrollProgress(scrollY) {
-        const progressBars = document.querySelectorAll('.progress-circle');
-        
-        progressBars.forEach(bar => {
-            const progress = bar.getAttribute('data-progress');
-            if (progress) {
-                const degrees = (progress / 100) * 360;
-                bar.style.background = `conic-gradient(#e53935 ${degrees}deg, #e0e0e0 0deg)`;
-                bar.querySelector('span').textContent = `${progress}%`;
-            }
-        });
-    }
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #e53935; }
+}
 
-    // Add to Cart Flying Animation
-    createCartAnimation(productImage, cartButton) {
-        const animation = document.createElement('div');
-        animation.className = 'cart-animation';
-        
-        // Clone the product image
-        const clone = productImage.cloneNode(true);
-        clone.style.width = '50px';
-        clone.style.height = '50px';
-        clone.style.borderRadius = '8px';
-        clone.style.objectFit = 'cover';
-        
-        animation.appendChild(clone);
-        document.body.appendChild(animation);
-        
-        // Calculate positions
-        const startRect = productImage.getBoundingClientRect();
-        const endRect = cartButton.getBoundingClientRect();
-        
-        const startX = startRect.left + startRect.width / 2;
-        const startY = startRect.top + startRect.height / 2;
-        const endX = endRect.left + endRect.width / 2;
-        const endY = endRect.top + endRect.height / 2;
-        
-        // Set CSS variables for animation
-        animation.style.setProperty('--tx', `${endX - startX}px`);
-        animation.style.setProperty('--ty', `${endY - startY}px`);
-        animation.style.left = `${startX}px`;
-        animation.style.top = `${startY}px`;
-        
-        // Remove after animation
-        setTimeout(() => {
-            animation.remove();
-        }, 1000);
-    }
+/* Fade In Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease 0.5s forwards;
+}
 
-    // Modal Animation System
-    showModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    }
+.fade-in-delay {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease 1s forwards;
+}
 
-    hideModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-
-    // Voice Search Animation
-    startVoiceSearch() {
-        const voiceBtn = document.querySelector('.voice-search');
-        voiceBtn.classList.add('listening');
-        
-        // Simulate voice listening
-        setTimeout(() => {
-            voiceBtn.classList.remove('listening');
-        }, 3000);
-    }
-
-    // Success Animation
-    showSuccessAnimation(element) {
-        const success = document.createElement('div');
-        success.className = 'success-checkmark';
-        success.innerHTML = `
-            <div class="check-icon">
-                <span class="icon-line line-tip"></span>
-                <span class="icon-line line-long"></span>
-                <div class="icon-circle"></div>
-                <div class="icon-fix"></div>
-            </div>
-        `;
-        
-        element.appendChild(success);
-        
-        setTimeout(() => {
-            success.remove();
-        }, 3000);
-    }
-
-    // Event System for Animation Coordination
-    on(event, callback) {
-        this.observers.push({ event, callback });
-    }
-
-    triggerEvent(event, data) {
-        this.observers.forEach(observer => {
-            if (observer.event === event) {
-                observer.callback(data);
-            }
-        });
-    }
-
-    // Page Transition System
-    navigateTo(url) {
-        const loadingScreen = document.getElementById('loadingScreen') || this.createLoadingScreen();
-        
-        loadingScreen.classList.remove('fade-out');
-        
-        setTimeout(() => {
-            window.location.href = url;
-        }, 500);
-    }
-
-    createLoadingScreen() {
-        const loadingScreen = document.createElement('div');
-        loadingScreen.id = 'loadingScreen';
-        loadingScreen.className = 'loading-screen';
-        loadingScreen.innerHTML = `
-            <div class="loading-content">
-                <div class="logo-loader">
-                    <div class="logo-icon pulse">EB</div>
-                </div>
-                <div class="loading-text">
-                    <h2>ElssyBoutique</h2>
-                    <p>Loading...</p>
-                </div>
-                <div class="loading-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(loadingScreen);
-        return loadingScreen;
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-// ===== GLOBAL ANIMATION FUNCTIONS =====
+/* Staggered Children Animation */
+.stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
 
-// Initialize Animation Manager
-const animationManager = new AnimationManager();
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
 
-// Chatbot Functions
-function toggleChatbot() {
-    const chatbot = document.getElementById('chatbot');
-    const toggle = document.querySelector('.chatbot-toggle');
+/* Hover Glow Effects */
+.glow-on-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-on-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.glow-on-hover:hover::before {
+    left: 100%;
+}
+
+/* Floating Animation */
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Button Click Animation */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.btn:active::after {
+    width: 100px;
+    height: 100px;
+}
+
+/* Chatbot Animations */
+.chatbot {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transform: translateY(100px) scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatbot.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.chatbot-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #e53935 0%, #ff6b6b 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(229, 57, 53, 0.4);
+    z-index: 999;
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(229, 57, 53, 0.6);
+}
+
+.chatbot-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chatbot-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 1rem;
+    animation: messageSlide 0.3s ease;
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.bot-message p {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 18px 18px 18px 4px;
+    max-width: 80%;
+}
+
+/* Virtual Try-On Animations */
+.virtual-tryon {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 100px 0;
+}
+
+.tryon-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.tryon-device {
+    position: relative;
+    perspective: 1000px;
+}
+
+.tryon-screen {
+    width: 300px;
+    height: 500px;
+    background: #000;
+    border-radius: 30px;
+    padding: 20px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: deviceFloat 4s ease-in-out infinite;
+}
+
+@keyframes deviceFloat {
+    0%, 100% { transform: translateY(0) rotateX(5deg); }
+    50% { transform: translateY(-10px) rotateX(5deg); }
+}
+
+.tryon-screen::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #ff6b6b, #667eea, #764ba2);
+    border-radius: 40px;
+    z-index: -1;
+    opacity: 0.7;
+    filter: blur(20px);
+}
+
+.tryon-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 3rem;
+}
+
+/* AI Recommendations Animations */
+.ai-recommendations {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+}
+
+.recommendation-filters {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn.active {
+    background: #e53935;
+    color: white;
+    border-color: #e53935;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+}
+
+/* Product Card Hover Effects */
+.product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.product-card:hover::before {
+    left: 100%;
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+/* Add to Cart Animation */
+.add-to-cart {
+    position: relative;
+    overflow: hidden;
+}
+
+.cart-animation {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    animation: flyToCart 1s ease-in-out forwards;
+}
+
+@keyframes flyToCart {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.1) translate(var(--tx), var(--ty));
+        opacity: 0;
+    }
+}
+
+/* Gamification Animations */
+.progress-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(#e53935 0%, #e0e0e0 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 1s ease;
+}
+
+.progress-circle::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+}
+
+.progress-circle span {
+    position: relative;
+    z-index: 1;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Parallax Scrolling */
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Modal Animations */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+/* Voice Search Animation */
+.voice-search.listening {
+    animation: voicePulse 1s infinite;
+}
+
+@keyframes voicePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Count Up Animation */
+.stat-number {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark Mode Animations */
+.dark-mode .product-card {
+    background: #2d2d2d;
+    border: 1px solid #404040;
+}
+
+.dark-mode .filter-btn {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: #fff;
+}
+
+.dark-mode .filter-btn.active {
+    background: #e53935;
+    border-color: #e53935;
+}
+
+/* Responsive Animations */
+@media (max-width: 768px) {
+    .typing-animation {
+        animation: none;
+        border-right: none;
+        white-space: normal;
+    }
     
-    if (chatbot.classList.contains('active')) {
-        chatbot.classList.remove('active');
-        toggle.innerHTML = '<i class="fas fa-robot"></i>';
-    } else {
-        chatbot.classList.add('active');
-        toggle.innerHTML = '<i class="fas fa-times"></i>';
+    .chatbot {
+        width: calc(100% - 40px);
+        height: 70vh;
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .tryon-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .tryon-device {
+        order: -1;
     }
 }
 
-// Theme Toggle with Animation
-function toggleTheme() {
-    const body = document.body;
-    const themeToggle = document.querySelector('.theme-toggle i');
-    
-    body.style.transition = 'all 0.3s ease';
-    
-    if (body.classList.contains('light-mode')) {
-        body.classList.replace('light-mode', 'dark-mode');
-        themeToggle.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        body.classList.replace('dark-mode', 'light-mode');
-        themeToggle.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('theme', 'light');
-    }
+/* Loading States */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
 }
 
-// Virtual Try-On Starter
-function startVirtualTryOn() {
-    animationManager.showModal('virtualTryonModal');
-    // In a real implementation, this would initialize camera and AR
-    console.log('Starting virtual try-on experience...');
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
-// AI Prompt System
-function openAIPrompt() {
-    animationManager.showModal('aiPromptModal');
-    
-    // Load AI style questions
-    const styleQuestions = document.querySelector('.style-questions');
-    styleQuestions.innerHTML = `
-        <div class="style-question">
-            <p>What's your primary workout activity?</p>
-            <div class="style-options">
-                <button class="style-option" data-activity="weightlifting">Weightlifting</button>
-                <button class="style-option" data-activity="cardio">Cardio</button>
-                <button class="style-option" data-activity="yoga">Yoga/Pilates</button>
-                <button class="style-option" data-activity="crossfit">CrossFit</button>
-            </div>
-        </div>
-    `;
+.dark-mode .skeleton {
+    background: linear-gradient(90deg, #2d2d2d 25%, #404040 50%, #2d2d2d 75%);
+    background-size: 200% 100%;
 }
 
-function closeAIPrompt() {
-    animationManager.hideModal('aiPromptModal');
+/* Success Animations */
+.success-checkmark {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
 }
 
-// User Menu Toggle
-function toggleUserMenu() {
-    const userDropdown = document.querySelector('.user-dropdown');
-    userDropdown.classList.toggle('active');
+.check-icon {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 4px solid #4CAF50;
 }
 
-// Wishlist Toggle
-function toggleWishlist() {
-    const wishlist = document.getElementById('wishlist');
-    wishlist.classList.toggle('active');
+.check-icon::before {
+    top: 3px;
+    left: -2px;
+    width: 30px;
+    transform-origin: 100% 50%;
+    border-radius: 100px 0 0 100px;
 }
 
-// Cart Toggle
-function toggleCart() {
-    const cartPreview = document.querySelector('.cart-preview');
-    cartPreview.classList.toggle('active');
+.check-icon::after {
+    top: 0;
+    left: 30px;
+    width: 60px;
+    transform-origin: 0 50%;
+    border-radius: 0 100px 100px 0;
+    animation: rotate-circle 4.25s ease-in;
 }
 
-// Social Login
-function socialLogin(provider) {
-    animationManager.showSuccessAnimation(document.body);
-    console.log(`Logging in with ${provider}...`);
-    // In real implementation, this would handle OAuth flow
+.check-icon::before, .check-icon::after {
+    content: '';
+    height: 100px;
+    position: absolute;
+    background: #FFFFFF;
+    transform: rotate(-45deg);
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Set initial theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    if (savedTheme === 'dark') {
-        document.body.classList.replace('light-mode', 'dark-mode');
-        const themeToggle = document.querySelector('.theme-toggle i');
-        if (themeToggle) {
-            themeToggle.classList.replace('fa-moon', 'fa-sun');
-        }
-    }
-    
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.user-menu')) {
-            document.querySelector('.user-dropdown')?.classList.remove('active');
-        }
-        if (!e.target.closest('.cart-container')) {
-            document.querySelector('.cart-preview')?.classList.remove('active');
-        }
-    });
-});
+.icon-line {
+    height: 5px;
+    background-color: #4CAF50;
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+}
 
-// Export for global use
-window.animationManager = animationManager;
-window.toggleChatbot = toggleChatbot;
-window.toggleTheme = toggleTheme;
-window.startVirtualTryOn = startVirtualTryOn;
-window.openAIPrompt = openAIPrompt;
-window.closeAIPrompt = closeAIPrompt;
-window.toggleUserMenu = toggleUserMenu;
-window.toggleWishlist = toggleWishlist;
-window.toggleCart = toggleCart;
-window.socialLogin = socialLogin;
+.icon-line.line-tip {
+    top: 46px;
+    left: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+    animation: icon-line-tip 0.75s;
+}
+
+.icon-line.line-long {
+    top: 38px;
+    right: 8px;
+    width: 47px;
+    transform: rotate(-45deg);
+    animation: icon-line-long 0.75s;
+}
+
+@keyframes rotate-circle {
+    0% { transform: rotate(-45deg); }
+    5% { transform: rotate(-45deg); }
+    12% { transform: rotate(-405deg); }
+    100% { transform: rotate(-405deg); }
+}
+
+@keyframes icon-line-tip {
+    0% { width: 0; left: 1px; top: 19px; }
+    54% { width: 0; left: 1px; top: 19px; }
+    70% { width: 50px; left: -8px; top: 37px; }
+    84% { width: 17px; left: 21px; top: 48px; }
+    100% { width: 25px; left: 14px; top: 45px; }
+}
+
+@keyframes icon-line-long {
+    0% { width: 0; right: 46px; top: 54px; }
+    65% { width: 0; right: 46px; top: 54px; }
+    84% { width: 55px; right: 0px; top: 35px; }
+    100% { width: 47px; right: 8px; top: 38px; }
+}
