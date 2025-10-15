@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElssyBoutique - Premium Gym Wear Kenya</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">EB</div>
+                    <span class="logo-text">ELSSY<span>BOUTIQUE</span></span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <a href="#home">HOME</a>
+                    <a href="#shop">SHOP</a>
+                    <a href="#men">MEN</a>
+                    <a href="#women">WOMEN</a>
+                    <a href="#accessories">ACCESSORIES</a>
+                </nav>
+
+                <!-- Action Icons -->
+                <div class="action-icons">
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="auth-btn" onclick="goToAuth()">
+                        <i class="far fa-user"></i>
+                    </button>
+                    <button class="wishlist-btn">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ELEVATE YOUR <span>WORKOUT</span></h1>
+                <p>Premium Kenyan gym wear designed for maximum performance. Experience the perfect blend of African style and athletic functionality.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">SHOP MEN'S COLLECTION</button>
+                    <button class="btn-secondary">SHOP WOMEN'S COLLECTION</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Products</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">47</div>
+                        <div class="stat-label">Counties Served</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>SHOP BY CATEGORY</h2>
+            <div class="categories-grid">
+                <div class="category-card men">
+                    <div class="category-content">
+                        <h3>MEN'S WEAR</h3>
+                        <p>Performance Gear for Him</p>
+                        <button class="btn-category">Shop Now →</button>
+                    </div>
+                </div>
+                <div class="category-card women">
+                    <div class="category-content">
+                        <h3>WOMEN'S WEAR</h3>
+                        <p>Style Meets Performance</p>
+                        <button class="btn-category">Shop Now →</button>
+                    </div>
+                </div>
+                <div class="category-card accessories">
+                    <div class="category-content">
+                        <h3>ACCESSORIES</h3>
+                        <p>Complete Your Look</p>
+                        <button class="btn-category">Shop Now →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="shop" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>FEATURED PRODUCTS</h2>
+                <a href="admin.html" class="admin-link">
+                    <i class="fas fa-lock"></i> Admin Panel
+                </a>
+            </div>
+            <div id="productsGrid" class="products-grid">
+                <!-- Products loaded dynamically -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading products...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>FREE SHIPPING</h3>
+                    <p>Free delivery nationwide on orders over KSH 2,000</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3>30-DAY RETURNS</h3>
+                    <p>Not satisfied? Return within 30 days for free</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>SECURE PAYMENT</h3>
+                    <p>Pay with M-Pesa, Card, or Bank Transfer securely</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <div class="logo-icon">EB</div>
+                        <span class="logo-text">ELSSYBOUTIQUE</span>
+                    </div>
+                    <p>Premium Kenyan gym wear blending style with performance. Wear Your Strength.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>SHOP</h3>
+                    <ul>
+                        <li><a href="#men">Men's Collection</a></li>
+                        <li><a href="#women">Women's Collection</a></li>
+                        <li><a href="#accessories">Accessories</a></li>
+                        <li><a href="#new">New Arrivals</a></li>
+                        <li><a href="#sale">Sale Items</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>SUPPORT</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>CONTACT</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                        <li><i class="fas fa-phone"></i> +254 711 123 456</li>
+                        <li><i class="fas fa-envelope"></i> support@elssyboutique.co.ke</li>
+                    </ul>
+                    <div class="newsletter">
+                        <p>NEWSLETTER</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email">
+                            <button><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ElssyBoutique. Proudly Kenyan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>YOUR CART</h3>
+            <button class="close-cart" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>SUBTOTAL:</span>
+                <span id="cartTotal">KSH 0</span>
+            </div>
+            <button class="btn-checkout">PROCEED TO CHECKOUT</button>
+            <button class="btn-continue" onclick="closeCart()">CONTINUE SHOPPING</button>
+        </div>
+    </div>
+    <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
