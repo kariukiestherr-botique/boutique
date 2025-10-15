@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElssyBoutique - Premium Gym Wear Kenya</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --elssy-black: #000000;
+            --elssy-red: #E50914;
+            --elssy-white: #FFFFFF;
+            --elssy-gray: #F4F4F4;
+        }
+        
+        .font-heading { font-family: 'Oswald', sans-serif; }
+        .font-body { font-family: 'Inter', sans-serif; }
+        
+        .bg-elssy-black { background-color: var(--elssy-black); }
+        .bg-elssy-red { background-color: var(--elssy-red); }
+        .bg-elssy-gray { background-color: var(--elssy-gray); }
+        .text-elssy-black { color: var(--elssy-black); }
+        .text-elssy-red { color: var(--elssy-red); }
+        .text-elssy-white { color: var(--elssy-white); }
+        .text-elssy-gray { color: var(--elssy-gray); }
+        .border-elssy-red { border-color: var(--elssy-red); }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="font-body bg-white">
+    <!-- Top Announcement Bar -->
+    <div class="bg-elssy-red text-elssy-white text-center py-2 px-4 text-sm">
+        🚀 FREE SHIPPING ON ORDERS OVER KSH 2,000 • NATIONWIDE DELIVERY
+    </div>
+
+    <!-- Header -->
+    <header class="bg-elssy-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-elssy-red rounded-full flex items-center justify-center">
+                        <span class="text-elssy-white font-bold text-sm">EB</span>
+                    </div>
+                    <span class="text-2xl font-heading font-bold text-elssy-black">ELSSY<span class="text-elssy-red">BOUTIQUE</span></span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="font-semibold hover:text-elssy-red transition-colors">HOME</a>
+                    <a href="#shop" class="font-semibold hover:text-elssy-red transition-colors">SHOP</a>
+                    <a href="#men" class="font-semibold hover:text-elssy-red transition-colors">MEN</a>
+                    <a href="#women" class="font-semibold hover:text-elssy-red transition-colors">WOMEN</a>
+                    <a href="#accessories" class="font-semibold hover:text-elssy-red transition-colors">ACCESSORIES</a>
+                    <!-- Admin Link -->
+                    <a href="admin.html" class="font-semibold text-elssy-red hover:underline">
+                        <i class="fas fa-lock mr-1"></i>ADMIN
+                    </a>
+                </nav>
+
+                <!-- Action Icons -->
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:text-elssy-red transition-colors">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                    <button class="p-2 hover:text-elssy-red transition-colors">
+                        <i class="far fa-user text-lg"></i>
+                    </button>
+                    <button class="p-2 hover:text-elssy-red transition-colors">
+                        <i class="far fa-heart text-lg"></i>
+                    </button>
+                    <button class="p-2 hover:text-elssy-red transition-colors relative">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span class="absolute -top-1 -right-1 bg-elssy-red text-elssy-white rounded-full w-5 h-5 text-xs flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gradient-to-r from-elssy-black to-gray-900 text-white">
+        <div class="container mx-auto px-4 py-20 md:py-32">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl md:text-7xl font-heading font-bold uppercase mb-6 leading-tight">
+                    ELEVATE YOUR <span class="text-elssy-red">WORKOUT</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                    Premium Kenyan gym wear designed for maximum performance. Experience the perfect blend of African style and athletic functionality.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-elssy-red text-white px-8 py-4 rounded-lg font-heading font-bold uppercase hover:bg-red-600 transition-colors text-lg">
+                        SHOP MEN'S COLLECTION
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-heading font-bold uppercase hover:bg-white hover:text-elssy-black transition-colors text-lg">
+                        SHOP WOMEN'S COLLECTION
+                    </button>
+                </div>
+                
+                <!-- Stats -->
+                <div class="flex space-x-8 mt-12 pt-8 border-t border-gray-700">
+                    <div>
+                        <div class="text-2xl font-bold text-elssy-red">5000+</div>
+                        <div class="text-gray-400">Happy Customers</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-elssy-red">100+</div>
+                        <div class="text-gray-400">Products</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-elssy-red">47</div>
+                        <div class="text-gray-400">Counties Served</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 bg-elssy-gray">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-heading font-bold text-center text-elssy-black mb-12">
+                SHOP BY CATEGORY
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Men's Category -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift transition-all duration-300">
+                    <div class="h-80 bg-gradient-to-br from-blue-900 to-blue-700 flex items-end justify-center relative">
+                        <div class="text-center p-6">
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">MEN'S WEAR</h3>
+                            <p class="text-blue-200 mb-4">Performance Gear for Him</p>
+                            <button class="bg-white text-blue-900 px-6 py-2 rounded-full font-semibold hover:bg-blue-50 transition-colors">
+                                Shop Now →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Women's Category -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift transition-all duration-300">
+                    <div class="h-80 bg-gradient-to-br from-pink-900 to-red-600 flex items-end justify-center relative">
+                        <div class="text-center p-6">
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">WOMEN'S WEAR</h3>
+                            <p class="text-pink-200 mb-4">Style Meets Performance</p>
+                            <button class="bg-white text-red-600 px-6 py-2 rounded-full font-semibold hover:bg-red-50 transition-colors">
+                                Shop Now →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accessories -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift transition-all duration-300">
+                    <div class="h-80 bg-gradient-to-br from-gray-900 to-gray-700 flex items-end justify-center relative">
+                        <div class="text-center p-6">
+                            <h3 class="text-2xl font-heading font-bold text-white mb-2">ACCESSORIES</h3>
+                            <p class="text-gray-300 mb-4">Complete Your Look</p>
+                            <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                Shop Now →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products will load here dynamically -->
+    <section id="shop" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-heading font-bold text-elssy-black">
+                    FEATURED PRODUCTS
+                </h2>
+            </div>
+            
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Products will be loaded here by JavaScript -->
+                <div class="text-center py-12">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-elssy-red mx-auto mb-4"></div>
+                    <p class="text-gray-500">Loading products...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of your store code (Features, Footer, Cart) remains the same -->
+    <!-- Features Section -->
+    <section class="py-16 bg-elssy-black text-elssy-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-elssy-red rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shipping-fast text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">FREE SHIPPING</h3>
+                    <p class="text-elssy-gray">Free delivery nationwide on orders over KSH 2,000</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-elssy-red rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-undo-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">30-DAY RETURNS</h3>
+                    <p class="text-elssy-gray">Not satisfied? Return within 30 days for free</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-elssy-red rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">SECURE PAYMENT</h3>
+                    <p class="text-elssy-gray">Pay with M-Pesa, Card, or Bank Transfer securely</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <!-- Your footer code here -->
+            <div class="text-center text-sm text-gray-400">
+                <p>&copy; 2025-2026 ElssyBoutique. All rights reserved.</p>
+                <p class="mt-2"><a href="admin.html" class="text-elssy-red hover:underline">Admin Login</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart (same as before) -->
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <!-- Your cart code here -->
+    </div>
+
+    <script>
+        // Load products from localStorage
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem('elssyProducts')) || [];
+            const productsGrid = document.getElementById('productsGrid');
+            
+            if (products.length === 0) {
+                productsGrid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-box-open text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">No products available yet</p>
+                        <p class="text-sm text-gray-400 mt-2">Check back soon for new arrivals!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            productsGrid.innerHTML = products.map(product => `
+                <div class="bg-elssy-gray rounded-xl overflow-hidden hover-lift transition-all duration-300">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center relative">
+                        ${product.image ? 
+                            `<img src="${product.image}" class="w-full h-full object-cover" alt="${product.name}">` : 
+                            `<span class="text-gray-500">NO IMAGE</span>`
+                        }
+                        ${product.status === 'out-of-stock' ? 
+                            `<div class="absolute top-3 right-3 bg-gray-600 text-white px-2 py-1 rounded text-xs font-bold">SOLD OUT</div>` :
+                            `<div class="absolute top-3 right-3 bg-elssy-red text-white px-2 py-1 rounded text-xs font-bold">HOT</div>`
+                        }
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-elssy-black">${product.name}</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">${product.description || 'Premium quality product'}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-elssy-red font-bold text-lg">KSH ${product.price.toLocaleString()}</span>
+                            <button onclick="addToCart('${product.name}', ${product.price})" 
+                                    ${product.status === 'out-of-stock' ? 'disabled' : ''}
+                                    class="bg-elssy-black text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition-colors ${product.status === 'out-of-stock' ? 'opacity-50 cursor-not-allowed' : ''}">
+                                <i class="fas fa-shopping-bag mr-1"></i> ${product.status === 'out-of-stock' ? 'SOLD OUT' : 'ADD'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load products when page loads
+        document.addEventListener('DOMContentLoaded', loadProducts);
+
+        // Your existing cart functions here
+        let cart = [];
+        let cartCount = 0;
+        let cartTotal = 0;
+
+        function addToCart(productName, price) {
+            // Your existing addToCart function
+        }
+
+        // Your existing cart UI functions
+        function updateCartUI() {
+            // Your existing updateCartUI function
+        }
+
+        function openCart() {
+            // Your existing openCart function
+        }
+
+        function closeCart() {
+            // Your existing closeCart function
+        }
+    </script>
+</body>
+</html>
