@@ -3,77 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElssyBoutique - Premium Gym Wear & Activewear</title>
-    <meta name="description" content="Shop premium gym wear and activewear. High-quality workout clothes for men and women. Free shipping in Kenya.">
+    <title>ElssyBoutique - Premium Gym Wear & Activewear Kenya</title>
+    <meta name="description" content="Kenya's premium gym wear destination. AI-powered recommendations, virtual try-on, and personalized shopping experience.">
     <link rel="stylesheet" href="styles/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <!-- Header -->
+<body class="light-mode">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-loader">
+                <div class="logo-icon pulse">EB</div>
+            </div>
+            <div class="loading-text">
+                <h2>ElssyBoutique</h2>
+                <p>Loading premium experience...</p>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="chatbot-info">
+                <h4>Style Assistant</h4>
+                <p>Online • AI Powered</p>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages">
+            <div class="message bot-message">
+                <p>Hi! I'm your AI style assistant. Need help finding the perfect gym wear?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Ask about sizes, styles, or recommendations...">
+            <button class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChatbot()">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- Header with Enhanced Features -->
     <header class="header">
         <div class="container">
             <div class="header-content">
+                <!-- Logo -->
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="index.html" class="logo-link">
                         <div class="logo-icon">EB</div>
                         <span class="logo-text">ElssyBoutique</span>
                     </a>
                 </div>
 
+                <!-- Enhanced Navigation -->
                 <nav class="main-nav">
-                    <a href="index.html" class="nav-link active">Home</a>
-                    <a href="shop.html" class="nav-link">Shop</a>
-                    <a href="#men" class="nav-link">Men</a>
-                    <a href="#women" class="nav-link">Women</a>
-                    <a href="#accessories" class="nav-link">Accessories</a>
+                    <a href="index.html" class="nav-link active" data-nav="home">Home</a>
+                    <a href="shop.html" class="nav-link" data-nav="shop">Shop</a>
+                    <div class="nav-dropdown">
+                        <a href="#collections" class="nav-link">Collections <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#new-arrivals">New Arrivals</a>
+                            <a href="#best-sellers">Best Sellers</a>
+                            <a href="#limited-edition">Limited Edition</a>
+                        </div>
+                    </div>
+                    <a href="#virtual-tryon" class="nav-link featured">Virtual Try-On</a>
                 </nav>
 
-                <div class="header-actions">
-                    <div class="search-container">
+                <!-- Advanced Search -->
+                <div class="search-container">
+                    <div class="search-box">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="search-input" placeholder="Search products...">
+                        <input type="text" class="search-input" placeholder="Search products or describe what you need...">
+                        <button class="voice-search" onclick="startVoiceSearch()">
+                            <i class="fas fa-microphone"></i>
+                        </button>
                     </div>
+                    <div class="search-results">
+                        <!-- AI-powered results will appear here -->
+                    </div>
+                </div>
+
+                <!-- User Actions -->
+                <div class="header-actions">
+                    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
                     
-                    <div class="action-buttons">
-                        <button class="auth-btn" onclick="window.location.href='auth.html'">
+                    <div class="user-menu">
+                        <button class="user-btn" onclick="toggleUserMenu()">
                             <i class="far fa-user"></i>
                         </button>
-                        <button class="wishlist-btn">
-                            <i class="far fa-heart"></i>
-                            <span class="badge">0</span>
-                        </button>
-                        <button class="cart-btn" onclick="window.location.href='cart.html'">
+                        <div class="user-dropdown">
+                            <div class="user-info">
+                                <h4>Welcome!</h4>
+                                <p>Sign in for personalized experience</p>
+                            </div>
+                            <div class="dropdown-actions">
+                                <a href="auth.html?type=login" class="dropdown-item">
+                                    <i class="fas fa-sign-in-alt"></i> Sign In
+                                </a>
+                                <a href="auth.html?type=signup" class="dropdown-item">
+                                    <i class="fas fa-user-plus"></i> Create Account
+                                </a>
+                                <div class="social-auth">
+                                    <button class="social-btn google" onclick="socialLogin('google')">
+                                        <i class="fab fa-google"></i>
+                                    </button>
+                                    <button class="social-btn facebook" onclick="socialLogin('facebook')">
+                                        <i class="fab fa-facebook"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="wishlist-btn" onclick="toggleWishlist()">
+                        <i class="far fa-heart"></i>
+                        <span class="badge wishlist-count">0</span>
+                    </button>
+
+                    <div class="cart-container">
+                        <button class="cart-btn" onclick="toggleCart()">
                             <i class="fas fa-shopping-bag"></i>
                             <span class="badge cart-count">0</span>
                         </button>
+                        <div class="cart-preview">
+                            <div class="preview-header">
+                                <h4>Your Cart</h4>
+                                <span class="preview-count">0 items</span>
+                            </div>
+                            <div class="preview-items">
+                                <!-- Cart items with AI recommendations -->
+                            </div>
+                            <div class="preview-recommendations">
+                                <h5>You Might Also Like</h5>
+                                <!-- AI recommendations based on cart -->
+                            </div>
+                            <div class="preview-footer">
+                                <div class="preview-total">
+                                    <span>Subtotal:</span>
+                                    <span class="preview-amount">KSH 0</span>
+                                </div>
+                                <button class="btn-preview-checkout" onclick="goToCheckout()">Secure Checkout</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Enhanced Hero Section with Parallax -->
     <section class="hero">
+        <div class="hero-background">
+            <div class="parallax-layer" data-depth="0.1"></div>
+            <div class="parallax-layer" data-depth="0.3"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Elevate Your Performance</h1>
-                <p class="hero-subtitle">Premium gym wear designed for serious athletes. Experience unmatched comfort and style in every workout.</p>
-                <div class="hero-actions">
-                    <a href="shop.html" class="btn btn-primary">Shop Collection</a>
-                    <a href="#featured" class="btn btn-secondary">New Arrivals</a>
+                <div class="hero-badge">
+                    <span class="badge-new">AI-Powered Shopping</span>
                 </div>
+                <h1 class="hero-title typing-animation">Elevate Your Performance</h1>
+                <p class="hero-subtitle fade-in-up">Premium gym wear enhanced with AI recommendations and virtual fitting technology</p>
+                
+                <div class="hero-actions">
+                    <a href="shop.html" class="btn btn-primary glow-on-hover">
+                        <i class="fas fa-robot"></i> Smart Shop
+                    </a>
+                    <a href="#virtual-tryon" class="btn btn-secondary">
+                        <i class="fas fa-vr-cardboard"></i> Virtual Try-On
+                    </a>
+                </div>
+
+                <!-- AI Personalization Prompt -->
+                <div class="ai-prompt fade-in-delay">
+                    <div class="ai-prompt-content">
+                        <i class="fas fa-magic"></i>
+                        <p>Tell me your workout style for personalized recommendations</p>
+                        <button class="btn-ai-prompt" onclick="openAIPrompt()">Get Started</button>
+                    </div>
+                </div>
+
                 <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">5,000+</div>
+                    <div class="stat" data-count="5000">
+                        <div class="stat-number">0</div>
                         <div class="stat-label">Happy Customers</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Premium Products</div>
+                    <div class="stat" data-count="100">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">AI Recommendations</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">47</div>
+                    <div class="stat" data-count="47">
+                        <div class="stat-number">0</div>
                         <div class="stat-label">Counties Served</div>
                     </div>
                 </div>
@@ -81,92 +220,144 @@
         </div>
     </section>
 
-    <!-- Featured Categories -->
-    <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Shop By Category</h2>
-            <div class="categories-grid">
-                <div class="category-card men">
-                    <div class="category-content">
-                        <h3>Men's Collection</h3>
-                        <p>Performance gear for serious training</p>
-                        <a href="#men" class="btn-category">Shop Now</a>
-                    </div>
-                </div>
-                <div class="category-card women">
-                    <div class="category-content">
-                        <h3>Women's Collection</h3>
-                        <p>Style meets performance</p>
-                        <a href="#women" class="btn-category">Shop Now</a>
-                    </div>
-                </div>
-                <div class="category-card accessories">
-                    <div class="category-content">
-                        <h3>Accessories</h3>
-                        <p>Complete your workout gear</p>
-                        <a href="#accessories" class="btn-category">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section class="featured-products">
+    <!-- AI Recommendation Section -->
+    <section class="ai-recommendations">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Featured Products</h2>
-                <a href="shop.html" class="view-all">View All Products</a>
+                <h2 class="section-title">
+                    <i class="fas fa-robot"></i> Personalized For You
+                </h2>
+                <p>Our AI analyzes your preferences to show the perfect items</p>
             </div>
-            <div id="featuredProducts" class="products-grid">
-                <!-- Products loaded dynamically -->
+            <div class="recommendation-filters">
+                <button class="filter-btn active" data-filter="trending">Trending</button>
+                <button class="filter-btn" data-filter="personalized">For You</button>
+                <button class="filter-btn" data-filter="similar">Similar to Your Style</button>
+            </div>
+            <div id="aiProducts" class="products-grid">
+                <!-- AI-recommended products loaded dynamically -->
             </div>
         </div>
     </section>
 
-    <!-- Trust Signals -->
+    <!-- Virtual Try-On Section -->
+    <section class="virtual-tryon">
+        <div class="container">
+            <div class="tryon-content">
+                <div class="tryon-info">
+                    <h2>Virtual Try-On Experience</h2>
+                    <p>See how our gym wear looks on you before buying. Powered by augmented reality technology.</p>
+                    <div class="tryon-features">
+                        <div class="feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Use your camera</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Try multiple items</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-share"></i>
+                            <span>Share with friends</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="startVirtualTryOn()">
+                        <i class="fas fa-camera"></i> Start Virtual Try-On
+                    </button>
+                </div>
+                <div class="tryon-preview">
+                    <div class="tryon-device">
+                        <div class="tryon-screen">
+                            <div class="tryon-placeholder">
+                                <i class="fas fa-user-circle"></i>
+                                <p>Camera preview will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Trust Signals -->
     <section class="trust-signals">
         <div class="container">
             <div class="trust-grid">
-                <div class="trust-item">
-                    <i class="fas fa-shipping-fast"></i>
-                    <h4>Free Shipping</h4>
-                    <p>Free delivery on orders over KSH 2,000</p>
+                <div class="trust-item" data-aos="fade-up">
+                    <div class="trust-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>AI-Secured Payments</h4>
+                    <p>Advanced fraud detection with machine learning</p>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-undo-alt"></i>
-                    <h4>Easy Returns</h4>
-                    <p>30-day return policy</p>
+                <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="trust-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h4>Smart Returns</h4>
+                    <p>AI-powered return prediction and prevention</p>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Secure Payment</h4>
-                    <p>100% secure payment processing</p>
+                <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="trust-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h4>Predictive Shipping</h4>
+                    <p>AI estimates delivery dates with 95% accuracy</p>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-headset"></i>
-                    <h4>Customer Support</h4>
-                    <p>Dedicated support team</p>
+                <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="trust-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>24/7 AI Support</h4>
+                    <p>Instant answers from our style assistant</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
+    <!-- Gamification Section -->
+    <section class="gamification">
         <div class="container">
-            <div class="newsletter-content">
-                <h3>Stay Updated</h3>
-                <p>Get the latest updates on new products and exclusive offers</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
+            <div class="gamification-content">
+                <h2>Earn Rewards as You Shop</h2>
+                <p>Complete challenges, earn points, and unlock exclusive benefits</p>
+                <div class="rewards-grid">
+                    <div class="reward-card">
+                        <div class="reward-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4>Welcome Bonus</h4>
+                        <p>100 points on your first purchase</p>
+                        <div class="progress-circle" data-progress="0">
+                            <span>0%</span>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h4>Style Reviewer</h4>
+                        <p>50 points for product reviews with photos</p>
+                        <div class="progress-circle" data-progress="0">
+                            <span>0%</span>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h4>Social Influencer</h4>
+                        <p>75 points for social media shares</p>
+                        <div class="progress-circle" data-progress="0">
+                            <span>0%</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Enhanced Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -175,60 +366,95 @@
                         <div class="logo-icon">EB</div>
                         <span class="logo-text">ElssyBoutique</span>
                     </div>
-                    <p>Premium gym wear and activewear for the modern athlete. Quality, comfort, and style in every product.</p>
+                    <p>AI-powered premium gym wear. Personalized shopping experience with virtual try-on technology.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4>AI Features</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop All</a></li>
-                        <li><a href="#men">Men's Collection</a></li>
-                        <li><a href="#women">Women's Collection</a></li>
-                        <li><a href="#accessories">Accessories</a></li>
+                        <li><a href="#virtual-tryon">Virtual Try-On</a></li>
+                        <li><a href="#ai-recommendations">Smart Recommendations</a></li>
+                        <li><a href="#size-assistant">AI Size Assistant</a></li>
+                        <li><a href="#style-ai">Style AI</a></li>
+                        <li><a href="#chatbot">AI Chat Support</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
                     <h4>Customer Service</h4>
                     <ul>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="#shipping">Shipping Info</a></li>
-                        <li><a href="#returns">Returns & Exchanges</a></li>
-                        <li><a href="#size-guide">Size Guide</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="contact.html">Contact AI Support</a></li>
+                        <li><a href="shipping.html">Predictive Shipping</a></li>
+                        <li><a href="returns.html">Smart Returns</a></li>
+                        <li><a href="size-guide.html">AI Size Guide</a></li>
+                        <li><a href="faq.html">AI FAQ</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
+                    <h4>Business Info</h4>
                     <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> support@trendwaveconnect.com</p>
+                        <p><i class="fas fa-phone"></i> +254 114 993 975</p>
                         <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                        <p><i class="fas fa-phone"></i> +254 711 123 456</p>
-                        <p><i class="fas fa-envelope"></i> support@elssyboutique.com</p>
-                        <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+                        <p><i class="fas fa-clock"></i> 24/7 AI Support</p>
+                    </div>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-m-pesa" title="M-Pesa"></i>
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fas fa-university" title="Bank Transfer"></i>
                     </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 ElssyBoutique. All rights reserved.</p>
+                <p>&copy; 2024 ElssyBoutique by TrendWave Connect. AI-Powered E-Commerce.</p>
                 <div class="footer-links">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
-                    <a href="admin-login.html" class="admin-link">Admin</a>
+                    <a href="privacy.html">AI Privacy Policy</a>
+                    <a href="terms.html">Smart Terms</a>
+                    <a href="shipping.html">Kenya-Wide Shipping</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- AI Prompt Modal -->
+    <div id="aiPromptModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>AI Style Assistant</h3>
+                <button class="modal-close" onclick="closeAIPrompt()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Help me understand your style for better recommendations:</p>
+                <div class="style-questions">
+                    <!-- AI style questions will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
-    <script src="js/products.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/virtual-tryon.js"></script>
+    <script src="js/gamification.js"></script>
 </body>
 </html>
