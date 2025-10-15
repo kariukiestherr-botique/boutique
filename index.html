@@ -3,275 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElssyBoutique - Premium Gym Wear Kenya</title>
+    <title>ElssyBoutique - Premium Gym Wear & Activewear</title>
+    <meta name="description" content="Shop premium gym wear and activewear. High-quality workout clothes for men and women. Free shipping in Kenya.">
     <link rel="stylesheet" href="styles/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="light-mode">
+<body>
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="nav-wrapper">
-                <!-- Logo -->
+            <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon">EB</div>
-                    <span class="logo-text">ELSSY<span>BOUTIQUE</span></span>
+                    <a href="index.html">
+                        <div class="logo-icon">EB</div>
+                        <span class="logo-text">ElssyBoutique</span>
+                    </a>
                 </div>
 
-                <!-- Navigation -->
-                <nav class="nav">
-                    <a href="#home">HOME</a>
-                    <a href="#shop">SHOP</a>
-                    <a href="#men">MEN</a>
-                    <a href="#women">WOMEN</a>
-                    <a href="#accessories">ACCESSORIES</a>
-                </nav>
-
-                <!-- Action Icons -->
-                <div class="action-icons">
-                    <button class="theme-toggle" onclick="toggleTheme()">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="auth-btn" onclick="goToAuth()">
-                        <i class="far fa-user"></i>
-                    </button>
-                    <button class="wishlist-btn">
-                        <i class="far fa-heart"></i>
-                    </button>
-                    <button class="cart-btn" onclick="toggleCart()">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-count">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header><!-- Top Announcement Bar -->
-<div class="announcement-bar">
-    <div class="container">
-        <div class="announcement-content">
-            <span class="announcement-text">
-                🚀 FREE SHIPPING ON ORDERS OVER KSH 2,000 • 🇰🇪 NATIONWIDE DELIVERY
-            </span>
-            <div class="announcement-actions">
-                <a href="#contact" class="announcement-link">Contact Support</a>
-                <span class="announcement-divider">|</span>
-                <a href="#tracking" class="announcement-link">Track Order</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Main Header -->
-<header class="header professional-header">
-    <div class="container">
-        <div class="nav-wrapper">
-            <!-- Left: Logo & Main Navigation -->
-            <div class="nav-left">
-                <!-- Logo -->
-                <div class="logo">
-                    <div class="logo-icon">
-                        <div class="logo-symbol">E</div>
-                        <div class="logo-dumbbell"></div>
-                    </div>
-                    <span class="logo-text">ELSSY<span>BOUTIQUE</span></span>
-                </div>
-
-                <!-- Desktop Navigation -->
                 <nav class="main-nav">
-                    <div class="nav-item">
-                        <a href="#home" class="nav-link">HOME</a>
-                    </div>
-                    <div class="nav-item has-megamenu">
-                        <a href="#shop" class="nav-link">SHOP <i class="fas fa-chevron-down"></i></a>
-                        <div class="megamenu">
-                            <div class="megamenu-content">
-                                <div class="megamenu-column">
-                                    <h4>MEN'S COLLECTION</h4>
-                                    <ul>
-                                        <li><a href="#men-tops">Workout Tops</a></li>
-                                        <li><a href="#men-bottoms">Training Bottoms</a></li>
-                                        <li><a href="#men-shorts">Gym Shorts</a></li>
-                                        <li><a href="#men-accessories">Accessories</a></li>
-                                    </ul>
-                                </div>
-                                <div class="megamenu-column">
-                                    <h4>WOMEN'S COLLECTION</h4>
-                                    <ul>
-                                        <li><a href="#women-tops">Sports Tops</a></li>
-                                        <li><a href="#women-leggings">Leggings</a></li>
-                                        <li><a href="#women-sports-bras">Sports Bras</a></li>
-                                        <li><a href="#women-accessories">Accessories</a></li>
-                                    </ul>
-                                </div>
-                                <div class="megamenu-column">
-                                    <h4>FEATURED</h4>
-                                    <ul>
-                                        <li><a href="#new-arrivals">New Arrivals</a></li>
-                                        <li><a href="#best-sellers">Best Sellers</a></li>
-                                        <li><a href="#sale">Sale Items</a></li>
-                                        <li><a href="#collections">Collections</a></li>
-                                    </ul>
-                                </div>
-                                <div class="megamenu-featured">
-                                    <div class="featured-product">
-                                        <div class="featured-image"></div>
-                                        <div class="featured-info">
-                                            <h5>NEW: Performance Pro</h5>
-                                            <p>Advanced workout gear</p>
-                                            <a href="#featured" class="btn-featured">Shop Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="#collections" class="nav-link">COLLECTIONS</a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="#deals" class="nav-link sale-link">DEALS <span class="sale-badge">HOT</span></a>
-                    </div>
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="shop.html" class="nav-link">Shop</a>
+                    <a href="#men" class="nav-link">Men</a>
+                    <a href="#women" class="nav-link">Women</a>
+                    <a href="#accessories" class="nav-link">Accessories</a>
                 </nav>
-            </div>
 
-            <!-- Center: Search Bar -->
-            <div class="nav-center">
-                <div class="search-container">
-                    <div class="search-box">
+                <div class="header-actions">
+                    <div class="search-container">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="search-input" placeholder="Search products, brands, categories...">
-                        <button class="search-clear">
-                            <i class="fas fa-times"></i>
+                        <input type="text" class="search-input" placeholder="Search products...">
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="auth-btn" onclick="window.location.href='auth.html'">
+                            <i class="far fa-user"></i>
+                        </button>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                            <span class="badge">0</span>
+                        </button>
+                        <button class="cart-btn" onclick="window.location.href='cart.html'">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
                         </button>
                     </div>
-                    <div class="search-results">
-                        <!-- Search results will appear here -->
-                    </div>
                 </div>
             </div>
-
-            <!-- Right: Action Icons -->
-            <div class="nav-right">
-                <!-- Theme Toggle -->
-                <button class="nav-icon theme-toggle" onclick="toggleTheme()" title="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-
-                <!-- User Account -->
-                <div class="nav-icon user-account">
-                    <button class="account-btn">
-                        <i class="far fa-user"></i>
-                    </button>
-                    <div class="account-dropdown">
-                        <div class="dropdown-header">
-                            <h4>Your Account</h4>
-                        </div>
-                        <div class="dropdown-content">
-                            <a href="auth.html" class="dropdown-item">
-                                <i class="fas fa-sign-in-alt"></i>
-                                Sign In
-                            </a>
-                            <a href="auth.html" class="dropdown-item">
-                                <i class="fas fa-user-plus"></i>
-                                Create Account
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#orders" class="dropdown-item">
-                                <i class="fas fa-shopping-bag"></i>
-                                Your Orders
-                            </a>
-                            <a href="#wishlist" class="dropdown-item">
-                                <i class="far fa-heart"></i>
-                                Wishlist
-                            </a>
-                            <a href="#settings" class="dropdown-item">
-                                <i class="fas fa-cog"></i>
-                                Account Settings
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wishlist -->
-                <button class="nav-icon wishlist-btn" title="Wishlist">
-                    <i class="far fa-heart"></i>
-                    <span class="icon-badge wishlist-count">0</span>
-                </button>
-
-                <!-- Shopping Cart -->
-                <div class="nav-icon cart-container">
-                    <button class="cart-btn" onclick="toggleCart()" title="Shopping Cart">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="icon-badge cart-count">0</span>
-                    </button>
-                    <div class="cart-preview">
-                        <div class="preview-header">
-                            <h4>Your Cart</h4>
-                            <span class="preview-count">0 items</span>
-                        </div>
-                        <div class="preview-items">
-                            <!-- Cart items will appear here -->
-                        </div>
-                        <div class="preview-footer">
-                            <div class="preview-total">
-                                <span>Subtotal:</span>
-                                <span class="preview-amount">KSH 0</span>
-                            </div>
-                            <button class="btn-preview-checkout" onclick="toggleCart()">View Cart</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
         </div>
-    </div>
-</header>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
-<div class="mobile-menu">
-    <div class="mobile-menu-header">
-        <div class="logo">
-            <div class="logo-icon">EB</div>
-            <span class="logo-text">ELSSY<span>BOUTIQUE</span></span>
-        </div>
-        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    <div class="mobile-menu-content">
-        <!-- Mobile menu content will be populated by JavaScript -->
-    </div>
-</div>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>ELEVATE YOUR <span>WORKOUT</span></h1>
-                <p>Premium Kenyan gym wear designed for maximum performance. Experience the perfect blend of African style and athletic functionality.</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary">SHOP MEN'S COLLECTION</button>
-                    <button class="btn-secondary">SHOP WOMEN'S COLLECTION</button>
+                <h1 class="hero-title">Elevate Your Performance</h1>
+                <p class="hero-subtitle">Premium gym wear designed for serious athletes. Experience unmatched comfort and style in every workout.</p>
+                <div class="hero-actions">
+                    <a href="shop.html" class="btn btn-primary">Shop Collection</a>
+                    <a href="#featured" class="btn btn-secondary">New Arrivals</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
-                        <div class="stat-number">5000+</div>
+                        <div class="stat-number">5,000+</div>
                         <div class="stat-label">Happy Customers</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">100+</div>
-                        <div class="stat-label">Products</div>
+                        <div class="stat-label">Premium Products</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">47</div>
@@ -282,80 +81,87 @@
         </div>
     </section>
 
-    <!-- Categories Section -->
+    <!-- Featured Categories -->
     <section class="categories">
         <div class="container">
-            <h2>SHOP BY CATEGORY</h2>
+            <h2 class="section-title">Shop By Category</h2>
             <div class="categories-grid">
                 <div class="category-card men">
                     <div class="category-content">
-                        <h3>MEN'S WEAR</h3>
-                        <p>Performance Gear for Him</p>
-                        <button class="btn-category">Shop Now →</button>
+                        <h3>Men's Collection</h3>
+                        <p>Performance gear for serious training</p>
+                        <a href="#men" class="btn-category">Shop Now</a>
                     </div>
                 </div>
                 <div class="category-card women">
                     <div class="category-content">
-                        <h3>WOMEN'S WEAR</h3>
-                        <p>Style Meets Performance</p>
-                        <button class="btn-category">Shop Now →</button>
+                        <h3>Women's Collection</h3>
+                        <p>Style meets performance</p>
+                        <a href="#women" class="btn-category">Shop Now</a>
                     </div>
                 </div>
                 <div class="category-card accessories">
                     <div class="category-content">
-                        <h3>ACCESSORIES</h3>
-                        <p>Complete Your Look</p>
-                        <button class="btn-category">Shop Now →</button>
+                        <h3>Accessories</h3>
+                        <p>Complete your workout gear</p>
+                        <a href="#accessories" class="btn-category">Shop Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="shop" class="products">
+    <!-- Featured Products -->
+    <section class="featured-products">
         <div class="container">
             <div class="section-header">
-                <h2>FEATURED PRODUCTS</h2>
-                <a href="admin.html" class="admin-link">
-                    <i class="fas fa-lock"></i> Admin Panel
-                </a>
+                <h2 class="section-title">Featured Products</h2>
+                <a href="shop.html" class="view-all">View All Products</a>
             </div>
-            <div id="productsGrid" class="products-grid">
+            <div id="featuredProducts" class="products-grid">
                 <!-- Products loaded dynamically -->
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Loading products...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="trust-signals">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Free Shipping</h4>
+                    <p>Free delivery on orders over KSH 2,000</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-undo-alt"></i>
+                    <h4>Easy Returns</h4>
+                    <p>30-day return policy</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Secure Payment</h4>
+                    <p>100% secure payment processing</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-headset"></i>
+                    <h4>Customer Support</h4>
+                    <p>Dedicated support team</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Newsletter -->
+    <section class="newsletter">
         <div class="container">
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <h3>FREE SHIPPING</h3>
-                    <p>Free delivery nationwide on orders over KSH 2,000</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-undo-alt"></i>
-                    </div>
-                    <h3>30-DAY RETURNS</h3>
-                    <p>Not satisfied? Return within 30 days for free</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>SECURE PAYMENT</h3>
-                    <p>Pay with M-Pesa, Card, or Bank Transfer securely</p>
-                </div>
+            <div class="newsletter-content">
+                <h3>Stay Updated</h3>
+                <p>Get the latest updates on new products and exclusive offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </div>
     </section>
@@ -367,84 +173,62 @@
                 <div class="footer-section">
                     <div class="logo">
                         <div class="logo-icon">EB</div>
-                        <span class="logo-text">ELSSYBOUTIQUE</span>
+                        <span class="logo-text">ElssyBoutique</span>
                     </div>
-                    <p>Premium Kenyan gym wear blending style with performance. Wear Your Strength.</p>
+                    <p>Premium gym wear and activewear for the modern athlete. Quality, comfort, and style in every product.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
+
                 <div class="footer-section">
-                    <h3>SHOP</h3>
+                    <h4>Quick Links</h4>
                     <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop All</a></li>
                         <li><a href="#men">Men's Collection</a></li>
                         <li><a href="#women">Women's Collection</a></li>
                         <li><a href="#accessories">Accessories</a></li>
-                        <li><a href="#new">New Arrivals</a></li>
-                        <li><a href="#sale">Sale Items</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
-                    <h3>SUPPORT</h3>
+                    <h4>Customer Service</h4>
                     <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns & Exchanges</a></li>
+                        <li><a href="#size-guide">Size Guide</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
-                    <h3>CONTACT</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
-                        <li><i class="fas fa-phone"></i> +254 711 123 456</li>
-                        <li><i class="fas fa-envelope"></i> support@elssyboutique.co.ke</li>
-                    </ul>
-                    <div class="newsletter">
-                        <p>NEWSLETTER</p>
-                        <div class="newsletter-form">
-                            <input type="email" placeholder="Your email">
-                            <button><i class="fas fa-paper-plane"></i></button>
-                        </div>
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                        <p><i class="fas fa-phone"></i> +254 711 123 456</p>
+                        <p><i class="fas fa-envelope"></i> support@elssyboutique.com</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 ElssyBoutique. Proudly Kenyan. All rights reserved.</p>
+                <p>&copy; 2024 ElssyBoutique. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="admin-login.html" class="admin-link">Admin</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Shopping Cart -->
-    <div id="cartSidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3>YOUR CART</h3>
-            <button class="close-cart" onclick="closeCart()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div id="cartItems" class="cart-items">
-            <div class="empty-cart">
-                <i class="fas fa-shopping-bag"></i>
-                <p>Your cart is empty</p>
-            </div>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>SUBTOTAL:</span>
-                <span id="cartTotal">KSH 0</span>
-            </div>
-            <button class="btn-checkout">PROCEED TO CHECKOUT</button>
-            <button class="btn-continue" onclick="closeCart()">CONTINUE SHOPPING</button>
-        </div>
-    </div>
-    <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
-
-    <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
 </body>
 </html>
